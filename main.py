@@ -32,6 +32,7 @@ if args.option=='add':
     link=input('Enter the link of the bookmark: ')
     new_bookmark=Bookmark(title=title,link=link)
     new_bookmark.save()
+    print(f'{new_bookmark.title}: {new_bookmark.link} added')
 
 
 if args.option=='find_all':
@@ -51,8 +52,10 @@ if args.option=='update':
    bookmark.title=new_title
    bookmark.link=new_link
    bookmark.save()
+   print(f'updated to {bookmark.title}: {bookmark.link}')
 
 if args.option=='delete':
     title=input('Enter the title of the boonkmark you want to delete: ')
     bookmark=Bookmark.get(Bookmark.title==title)
     bookmark.delete_instance()
+    print(f'{bookmark.title} deleted')
