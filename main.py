@@ -2,7 +2,7 @@ from peewee import *
 import argparse
 
 parser=argparse.ArgumentParser()
-parser.add_argument('option')
+parser.add_argument('option',help='you can provide option with add, find_all, find, update, or delete')
 args=parser.parse_args()
 # print(args)
 
