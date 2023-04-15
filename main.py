@@ -24,7 +24,6 @@ class Bookmark(BaseModel):
     title=CharField()
     link=CharField()
 
-# db.drop_tables([Bookmark])
 db.create_tables([Bookmark])
 
 if args.option=='add':
@@ -58,4 +57,4 @@ if args.option=='delete':
     title=input('Enter the title of the boonkmark you want to delete: ')
     bookmark=Bookmark.get(Bookmark.title==title)
     bookmark.delete_instance()
-    print(f'{bookmark.title} deleted')
+    print(f'{title} deleted')
