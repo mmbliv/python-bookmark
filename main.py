@@ -28,10 +28,8 @@ class Bookmark(BaseModel):
 db.create_tables([Bookmark])
 
 if args.option=='add':
-    print('Enter the tilte of the bookmark')
-    title=input('title: ')
-    print('Enter the link of the bookmark')
-    link=input('link: ')
+    title=input('Enter the tilte of the bookmark: ')
+    link=input('Enter the link of the bookmark: ')
     new_bookmark=Bookmark(title=title,link=link)
     new_bookmark.save()
 
@@ -41,7 +39,20 @@ if args.option=='find_all':
     print([f'{d.title}: {d.link}' for d in data])
 
 if args.option=='find':
-    print('Enter the bookmark title that you want to look for')
-    title=input('title: ')
+    title=input('Enter the bookmark title that you want to look for: ')
     bookmark=Bookmark.select().where(Bookmark.title==title)
     print([f'{d.title}: {d.link}' for d in bookmark])
+
+if args.option=='update':
+   title=input('Enter the title of the boonkmark you want to update: ') 
+   bookmark=Bookmark.get(Bookmark.title==title)
+   new_title=input('Enter the new title of the boonkmark you want to update: ')
+   new_link=input('Enter the new link of the boonkmark you want to update: ')
+   bookmark.title=new_title
+   bookmark.link=new_link
+   bookmark.save()
+
+if args.option=='delete':
+    title=input('Enter the title of the boonkmark you want to delete: ')
+    bookmark=Bookmark.get(Bookmark.title==title)
+    bookmark.delete_instance()
